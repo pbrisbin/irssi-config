@@ -46,8 +46,8 @@ aliases = {
 statusbar = {
   items = {
     time = "{sb $Z}       ";
-    window = ":: {sb [$winref] $tag $itemname}";
-    window_empty = ":: {sb [$winref] $tag $itemname}";
+    window = ":: {sb [$winref] $tag $itemname} ";
+    window_empty = ":: {sb [$winref] $tag $itemname} ";
 
     prompt = "{prompt}";
     prompt_empty = "{prompt}";
