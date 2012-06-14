@@ -58,7 +58,7 @@ statusbar = {
       type = "window";
       placement = "top";
       visible = "active";
-      items = { window = { }; window_empty = { }; };
+      items = { window = { }; window_empty = { }; typing_notice = { }; };
     };
 
     window_inact = {
