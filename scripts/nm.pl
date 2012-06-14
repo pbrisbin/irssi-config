@@ -3,17 +3,17 @@ use strict;
 
 use vars qw($VERSION %IRSSI);
 
-$VERSION="0.3.8";
+$VERSION="0.3.10";
 %IRSSI = (
 	authors=> 'BC-bd',
 	contact=> 'bd@bc-bd.org',
 	name=> 'nm',
 	description=> 'right aligned nicks depending on longest nick',
 	license=> 'GPL v2',
-	url=> 'git://bc-bd.org/git/irssi.git',
+	url=> 'http://bc-bd.org/blog/irssi/',
 );
 
-# $Id: 80ed8157d3c70c43c90d02036000a930b6f97a2d $
+# $Id: 9cb009e8b7e6f5ce60294334faf88715ef01413e $
 # nm.pl
 # for irssi 0.8.4 by bd@bc-bd.org
 #
@@ -26,6 +26,7 @@ $VERSION="0.3.8";
 # inspired by nickcolor.pl by Timo Sirainen and Ian Peters
 # thanks to And1 <and1@meinungsverstaerker.de> for a small patch
 # thanks to berber@tzi.de for the save/load patch
+# thanks to Dennis Heimbert <dennis.heimbert@gmail.com> for a bug report/patch
 #
 #########
 # USAGE
@@ -92,6 +93,15 @@ my $help = "
 ###
 #
 # Changelog
+#
+# Version 0.3.10
+#  - fix losing of saved color when changing nick shares more than one channel
+#    with you
+#
+# Version 0.3.9
+#  - fix longest nick calculation for nicks shorter than the current longest
+#    nick
+#  - updated url
 #
 # Version 0.3.8
 #  - fixed error in the nickchange tracking code, reported by Kevin Ballard
@@ -260,25 +270,35 @@ sub sig_changeNick
 {
 	my ($channel, $nick, $old_nick) = @_;
 
-	# we only need to recalculate if this was the longest nick
-	if (length($old_nick) == $longestNick) {
-		my $len = length($nick->{nick});
+	# if no saved color exists, we already handled this nickchange. irssi
+	# generates one signal per channel the nick is in, so if you share more
+	# than one channel with this nick, you'd lose the coloring.
+	return unless exists($saved_colors{$old_nick});
 
-		# if the new nick is shorter we need to find the longest nick
-		# again, if it is longer, it is the new longest nick
-		if ($len < $longestNick) {
-			# only look for a new longest nick if we are allowed to
-			# shrink
-			findLongestNick() if Irssi::settings_get_bool('neat_allow_shrinking');
-		} else {
-			$longestNick = $len;
-		}
+	# we need to update the saved colorors hash independent of nick lenght
+	$saved_colors{$nick->{nick}} = $saved_colors{$old_nick};
+	delete $saved_colors{$old_nick};
 
-		reformat();
+	my $new = length($nick->{nick});
+
+	# in case the new nick is longer than the old one, simply remember this
+	# as the new longest nick and reformat.
+	#
+	# if the new nick is as long as the known longest nick nothing has to be
+	# done
+	#
+	# if the new nick is shorter than the current longest one and if the
+	# user allows us to shrink, find new longest nick and reformat.
+	if ($new > $longestNick) {
+		$longestNick = $new;
+	} elsif ($new == $longestNick) {
+		return;
+	} else {
+		return unless Irssi::settings_get_bool('neat_allow_shrinking');
+		findLongestNick();
 	}
 
-	$saved_colors{$nick->{nick}} = $saved_colors{$old_nick};
-	delete $saved_colors{$old_nick}
+	reformat();
 }
 
 sub sig_removeNick
@@ -378,7 +398,7 @@ sub load_colors() {
 		# skip broken lines, those may have been introduced by nm.pl
 		# version 0.3.7 and earlier
 		if ($k eq '' || $v eq '') {
-#        		neat_log(Irssi::active_win(), "Warning, broken line in saved_colors file, skipping '$k:$v'");
+			neat_log(Irssi::active_win(), "Warning, broken line in saved_colors file, skipping '$k:$v'");
 			next;
 		}
 
