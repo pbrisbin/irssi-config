@@ -1,121 +1,158 @@
-# pbrisbin's irssi them
+##
+## pbrisbin's irssi theme.
+##
 
 default_color = "-1";
-
 info_eol = "false";
 replaces = { "[]=" = "%K$*%n"; };
 
+# Only overrides are shown, defaults are commented.
 abstracts = {
-  # generic
-  channel = "%_$*%_";
-  comment = "[$*]";
-  error = "%R$*%n";
-  hilight = "%W$*%W";
+  ##
+  ## Generic
+  ##
   line_start = "%c::%n ";
-  mode = "{comment $*}";
-  nick = "%_$*%_";
-  nickhost = "[$*]";
-  reason = "{comment $*}";
-  server = "%_$*%_";
   timestamp = "%K$0-%n";
+  hilight = "%W$*%W";
+
+  #error = "%R$*%n";
+  #channel = "%_$*%_";
+  #nick = "%_$*%_";
+  #nickhost = "[$*]";
+  #server = "%_$*%_";
+  #comment = "[$*]";
+  #reason = "{comment $*}";
+  #mode = "{comment $*}";
 
   # channel specific messages
-  ban = "%c$*%n";
-  chanhost = "{nickhost $*}";
-  chanhost_hilight = "{nickhost %c$*%n}";
-  channelhilight = "%c$*%n";
-  channick = "%c$*%n";
-  channick_hilight = "%C$*%n";
+  #channick_hilight = "%C$*%n";
+  #chanhost_hilight = "{nickhost %c$*%n}";
+  #channick = "%c$*%n";
+  #chanhost = "{nickhost $*}";
+  #channelhilight = "%c$*%n";
+  #ban = "%c$*%n";
 
-  # messages
-  menick = "%N$*%n";
-  msgchannel = "%K:%c$*%n";
-  msgnick = "%K%n$0$1-%K%n: %|";
-  ownmsgnick = "{msgnick $0 $1-}%w";
-  ownnick = "%w$*%n";
-  ownprivmsg = "[%r$0%K(%R$1-%K)%n] ";
-  ownprivmsgnick = "{msgnick $*}";
-  ownprivnick = "%W$*%n";
-  privmsg = "[%R$0%K(%r$1-%K)%n] ";
-  privmsgnick = "{msgnick %R$*%n}";
-  pubmsghinick = "{msgnick $1 $0$2-%n}";
-  pubmsgmenick = "{msgnick $0 $1-}";
-  pubmsgnick = "{msgnick $0 $1-}";
-  pubnick = "%N$*%n";
+  ##
+  ## Messages
+  ##
+  msgnick = "$0$1-%c:%n %|";
 
-  # Actions (/ME stuff)
+  #ownmsgnick = "{msgnick $0 $1-}";
+  #ownnick = "%W$*%n";
+  #pubmsgnick = "{msgnick $0 $1-}";
+  #pubnick = "%N$*%n";
+  #pubmsgmenick = "{msgnick $0 $1-}";
+  #menick = "%Y$*%n";
+  #pubmsghinick = "{msgnick $1 $0$2-%n}";
+  #msgchannel = "%K:%c$*%n";
+  #privmsg = "[%R$0%K(%r$1-%K)%n] ";
+  #ownprivmsg = "[%r$0%K(%R$1-%K)%n] ";
+  #ownprivmsgnick = "{msgnick  $*}";
+  #ownprivnick = "%W$*%n";
+  #privmsgnick = "{msgnick  %R$*%n}";
+
+  ##
+  ## Action
+  ##
   action_core = "%M$*";
   action = "{action_core $*}";
-  ownaction = "{action_core $*}";
-  ownaction_target = "{action_core $*}";
-  pubaction = "{action_core $*}";
   pvtaction = "{action_core $*}";
-  pvtaction_query = "{action_core $*}";
+  ownaction_target = "{action_core $*}";
 
-  # whois
-  whois = "%# $[8]0 : $1-";
+  #ownaction = "{action $*}";
+  #pubaction = "{action $*}";
+  #pvtaction_query = "{action $*}";
 
-  # notices
-  notice = "%K-%M$*%K-%n ";
-  ownnotice = "[%r$0%K(%R$1-%K)]%n ";
-  pubnotice_channel = "%K:%m$*";
-  pvtnotice_host = "%K(%m$*%K)";
-  servernotice = "%g!$*%n ";
+  ##
+  ## whois
+  ##
+  #whois = "%# $[8]0 : $1-";
 
-  # CTCPs
-  ctcp = "%g$*%n";
-  ownctcp = "[%r$0%K(%R$1-%K)] ";
+  ##
+  ## Notices
+  ##
+  #ownnotice = "[%r$0%K(%R$1-%K)]%n ";
+  #notice = "%K-%M$*%K-%n ";
+  #pubnotice_channel = "%K:%m$*";
+  #pvtnotice_host = "%K(%m$*%K)";
+  #servernotice = "%g!$*%n ";
 
-  # wallops
-  wallop = "%W$*%n: ";
-  wallop_action = "%W * $*%n ";
-  wallop_nick = "%n$*";
+  ##
+  ## CTCP
+  ##
+  #ownctcp = "[%r$0%K(%R$1-%K)] ";
+  #ctcp = "%g$*%n";
 
-  # netsplits
-  netjoin = "%C$*%n";
-  netsplit = "%R$*%n";
+  ##
+  ## Wallops
+  ##
+  #wallop = "%W$*%n: ";
+  #wallop_nick = "%n$*";
+  #wallop_action = "%W * $*%n ";
 
-  # /names list
-  names_channel = "%G$*%n";
-  names_nick = "[%_$0%_$1-] ";
-  names_nick_halfop = "{names_nick $*}";
-  names_nick_op = "{names_nick $*}";
-  names_nick_voice = "{names_nick $*}";
-  names_prefix = "";
-  names_users = "[%g$*%n]";
+  ##
+  ## Netsplits
+  ##
+  #netsplit = "%R$*%n";
+  #netjoin = "%C$*%n";
 
-  # DCC
-  dcc = "%g$*%n";
-  dccfile = "%_$*%_";
+  ##
+  ## Names
+  ##
+  #names_prefix = "";
+  #names_nick = "[%_$0%_$1-] ";
+  #names_nick_op = "{names_nick $*}";
+  #names_nick_halfop = "{names_nick $*}";
+  #names_nick_voice = "{names_nick $*}";
+  #names_users = "[%g$*%n]";
+  #names_channel = "%G$*%n";
 
-  # DCC chat, own msg/action
-  dccownaction = "{action $*}";
-  dccownaction_target = "{action_core $0}%K:%c$1%n ";
-  dccownmsg = "[%r$0%K($1-%K)%n] ";
-  dccownnick = "%R$*%n";
-  dccownquerynick = "%W$*%n";
+  ##
+  ## DCC
+  ##
+  #dcc = "%g$*%n";
+  #dccfile = "%_$*%_";
+  #dccownmsg = "[%r$0%K($1-%K)%n] ";
+  #dccownnick = "%R$*%n";
+  #dccownquerynick = "%W$*%n";
+  #dccownaction = "{action $*}";
+  #dccownaction_target = "{action_core $0}%K:%c$1%n ";
+  #dccmsg = "[%G$1-%K(%g$0%K)%n] ";
+  #dccquerynick = "%G$*%n";
+  #dccaction = "%W (*dcc*) $*%n %|";
 
-  # DCC chat, others
-  dccaction = "%W (*dcc*) $*%n %|";
-  dccmsg = "[%G$1-%K(%g$0%K)%n] ";
-  dccquerynick = "%G$*%n";
-
-  # statusbar
+  ##
+  ## Statusbar
+  ##
+  sb_background = "%n%0";
+  sbstart = " ";
+  sbend = " ";
   prompt = " %c:%n ";
   sb = "%W$*";
-  sb_background = "%n%0";
-  sbaway = " (%Gaway%n)";
-  sbend = "";
   sbmode = "";
-  sbservertag = ":$0 (change with ^X)";
-  sbstart = "";
-  topicsbend = "{sbend $*}";
-  topicsbstart = "{sbstart $*}";
+  sbaway = " (%Gaway%n)";
+
+  #sb_prompt_bg = "%n";
+  #sb_info_bg = "%8";
+  #sbstart = "";
+  #sbend = " ";
+  #topicsbstart = "{sbstart $*}";
+  #topicsbend = "{sbend $*}";
+  #prompt = "[$*] ";
+  #sb = " %c[%n$*%c]%n";
+  #sbmode = "(%c+%n$*)";
+  #sbaway = " (%GzZzZ%n)";
+  #sbservertag = ":$0 (change with ^X)";
+  #sbnickmode = "$0";
+  #sb_act_sep = "%c$*";
+  #sb_act_text = "%c$*";
+  #sb_act_msg = "%W$*";
+  #sb_act_hilight = "%M$*";
+  #sb_act_hilight_color = "$0$1-%n";
 };
 
 formats = {
   "fe-common/core" = {
-    pubmsg = "{pubmsgnick {pubnick %B$[-13]0}$2}$1";
     own_msg = "{ownmsgnick {ownnick $[-13]0$2}}$1";
     own_msg_channel = "{ownmsgnick {ownnick $[-13]0$3}{msgchannel $1}}$2";
     own_msg_private_query = "{ownprivmsgnick {ownprivnick $[-13]2}}$1";
@@ -123,6 +160,7 @@ formats = {
     pubmsg_me_channel = "{pubmsgmenick {menick $[-13]0$3}{msgchannel $1}}$2";
     pubmsg_hilight = "{pubmsghinick $0 $0 $[-13]1$3%n}$2";
     pubmsg_hilight_channel = "{pubmsghinick $0 $[-13]1$4{msgchannel $2}}$3";
+    pubmsg = "{pubmsgnick {pubnick %B$[-13]0}$2}$1";
     pubmsg_channel = "{pubmsgnick {pubnick %B$[-13]0}$2}$1";
     msg_private_query = "{privmsgnick $[-13]0}$2";
   };
