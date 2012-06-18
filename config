@@ -131,7 +131,7 @@ settings = {
     awl_sbar_maxlength = "no";
     awl_maxlines = "3";
     screen_away_message = "away";
-    hilightwin_showprivmsg = "yes";
+    hilightwin_showprivmsg = "no";
     bitlbee_send_typing = "yes";
     lt_in_queries = "yes";
   };
