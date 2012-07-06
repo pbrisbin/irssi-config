@@ -125,7 +125,7 @@ settings = {
   };
 
   "perl/core/scripts" = {
-    neat_maxlength = "13";
+    neat_maxlength = "15";
     awl_display_key = "%w$N.$H$C$S ";
     awl_position = "0";
     awl_sbar_maxlength = "no";
@@ -134,6 +134,7 @@ settings = {
     hilightwin_showprivmsg = "no";
     bitlbee_send_typing = "yes";
     lt_in_queries = "yes";
+    neat_left_actions = "yes";
   };
 };
 
