@@ -60,7 +60,7 @@ abstracts = {
   ownaction_target = "{action_core $*}";
 
   #ownaction = "{action $*}";
-  #pubaction = "{action $*}";
+  pubaction = "{action $*} "; # fix neatlength inconsistency, sigh
   #pvtaction_query = "{action $*}";
 
   ##
@@ -127,7 +127,7 @@ abstracts = {
   sb_background = "%n%0";
   sbstart = " ";
   sbend = " ";
-  prompt = " %c:%n ";
+  prompt = "   %c:%n ";
   sb = "%W$*";
   sbmode = "";
   sbaway = " (%Gaway%n)";

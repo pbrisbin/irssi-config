@@ -134,7 +134,7 @@ settings = {
     hilightwin_showprivmsg = "no";
     bitlbee_send_typing = "yes";
     lt_in_queries = "yes";
-    neat_left_actions = "yes";
+    neat_left_actions = "no";
   };
 };
 
