@@ -145,9 +145,11 @@ ignores = (
 
 hilights = (
   { text = "brisbin"; nick = "no"; word = "yes"; fullword = "yes"; },
+  { text = "@patbrisbin"; nick = "no"; word = "yes"; fullword = "yes"; },
   { text = "pbrisbin.com"; nick = "no"; word = "yes"; fullword = "no"; }
 );
 
+logs = { };
 windows = {
   1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
   2 = { name = "hilight"; sticky = "yes"; };
@@ -203,7 +205,6 @@ windows = {
   };
 };
 mainwindows = {
-  1 = { first_line = "12"; lines = "72"; };
-  2 = { first_line = "1"; lines = "11"; };
+  1 = { first_line = "6"; lines = "49"; };
+  2 = { first_line = "1"; lines = "5"; };
 };
-logs = { };
