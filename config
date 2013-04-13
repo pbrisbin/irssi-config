@@ -203,8 +203,18 @@ windows = {
       }
     );
   };
+  8 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#twitter_patbrisbin";
+        tag = "bitlbee";
+      }
+    );
+  };
 };
 mainwindows = {
-  1 = { first_line = "6"; lines = "49"; };
-  2 = { first_line = "1"; lines = "5"; };
+  1 = { first_line = "11"; lines = "44"; };
+  2 = { first_line = "1"; lines = "10"; };
 };
