@@ -1,3 +1,9 @@
+**Archived**: I've since both centralized my [dotfiles][] and moved to weechat. Therefore this repository will no longer see updates. It may continue to work and be useful, or it could stop working in newer irssi.
+
+[dotfiles]: https://github.com/pbrisbin/dotfiles
+
+---
+
 # Irssi
 
 ## Features
